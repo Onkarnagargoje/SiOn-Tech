@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiOn Technology - Innovating the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A8E8', // Brighter Blue for dark theme
+                        primaryHover: '#007EA7', // Darker shade of primary
+                        secondary: '#003459', // Dark Blue for backgrounds (used for footer before, now using dark)
+                        accent: '#00A8E8', // Using primary as accent for consistency
+                        accentHover: '#007EA7',
+                        light: '#CED4DA', // Light gray for text on dark backgrounds
+                        dark: '#121212', // Main dark background
+                        textDark: '#E9ECEF', // Light text for dark backgrounds
+                        textLight: '#212529', // Dark text for light elements (e.g., cards if any)
+                        cardBg: '#1A1A1A', // Slightly lighter dark for cards/sections
+                        borderDark: '#343A40', // Border color for dark theme
+                        heroCardBg: 'rgba(20, 20, 20, 0.85)', // Darker, more opaque for hero card text area
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 1s ease-out',
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: theme('fontFamily.sans');
+            background-color: theme('colors.dark');
+            color: theme('colors.textDark');
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: theme('fontFamily.heading');
+            color: theme('colors.textDark');
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: theme('colors.cardBg');
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.primary');
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primaryHover');
+        }
+
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: theme('colors.primary');
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link-underline:hover::after,
+        .nav-link-underline.active::after {
+            width: 100%;
+        }
+
+        .section-title-underline {
+            position: relative;
+            padding-bottom: 0.75rem;
+            /* 12px */
+        }
+
+        .section-title-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: theme('colors.primary');
+            border-radius: theme('borderRadius.sm');
+        }
+
+        .animated-section {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0) !important;
+        }
+
+        .contact-form-field {
+            background-color: theme('colors.cardBg');
+            border-color: theme('colors.borderDark');
+            color: theme('colors.textDark');
+        }
+
+        .contact-form-field::placeholder {
+            color: theme('colors.light');
+        }
+
+        .contact-form-field:focus {
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 0.2rem theme('colors.primary / 25%');
+        }
+
+        .hero-card-backdrop {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-cardBg/80 backdrop-blur-md shadow-lg fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center h-20">
+            <a href="index.html" class="text-2xl sm:text-3xl font-bold text-primary">SiOn<span
+                    class="text-accent">Tech</span></a>
+            <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                <a href="#hero"
+                    class="text-light hover:text-primary transition duration-300 nav-link-underline relative pb-1 text-md lg:text-lg">Home</a>
+                <a href="#about"
+                    class="text-light hover:text-primary transition duration-300 nav-link-underline relative pb-1 text-md lg:text-lg">About</a>
+                <a href="#why-us"
+                    class="text-light hover:text-primary transition duration-300 nav-link-underline relative pb-1 text-md lg:text-lg">Why
+                    Us</a>
+                <a href="#services"
+                    class="text-light hover:text-primary transition duration-300 nav-link-underline relative pb-1 text-md lg:text-lg">Services</a>
+                <a href="#portfolio"
+                    class="text-light hover:text-primary transition duration-300 nav-link-underline relative pb-1 text-md lg:text-lg">Portfolio</a>
+                <a href="#contact"
+                    class="bg-primary text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full hover:bg-primaryHover transition duration-300 text-md lg:text-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-light focus:outline-none">
+                    <i class="fas fa-bars text-2xl sm:text-3xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-cardBg shadow-xl absolute top-full left-0 w-full">
+            <a href="#hero"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg border-b border-borderDark">Home</a>
+            <a href="#about"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg border-b border-borderDark">About
+                Us</a>
+            <a href="#why-us"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg border-b border-borderDark">Why
+                Us</a>
+            <a href="#services"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg border-b border-borderDark">Services</a>
+            <a href="#portfolio"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg border-b border-borderDark">Portfolio</a>
+            <a href="#contact"
+                class="block px-6 py-3 text-light hover:bg-primary hover:text-white transition duration-300 text-lg">Contact
+                Us</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- index.html - Fully Mobile Compatible with Fixed Hero Section -->
+        <!DOCTYPE html>
+        <html lang="en" class="scroll-smooth">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SiOn Technology - Innovating the Future</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <script>
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                primary: '#00A8E8',
+                                primaryHover: '#007EA7',
+                                secondary: '#003459',
+                                accent: '#00A8E8',
+                                accentHover: '#007EA7',
+                                light: '#CED4DA',
+                                dark: '#121212',
+                                textDark: '#E9ECEF',
+                                textLight: '#212529',
+                                cardBg: '#1A1A1A',
+                                borderDark: '#343A40',
+                                heroCardBg: 'rgba(20, 20, 20, 0.85)',
+                            },
+                            fontFamily: {
+                                sans: ['Roboto', 'sans-serif'],
+                                heading: ['Montserrat', 'sans-serif']
+                            },
+                            animation: {
+                                'fade-in-down': 'fadeInDown 1s ease-out',
+                                'fade-in-up': 'fadeInUp 1s ease-out',
+                                'slide-in-left': 'slideInLeft 0.8s ease-out',
+                                'slide-in-right': 'slideInRight 0.8s ease-out',
+                            },
+                            keyframes: {
+                                fadeInDown: {
+                                    '0%': { opacity: '0', transform: 'translateY(-40px)' },
+                                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                                },
+                                fadeInUp: {
+                                    '0%': { opacity: '0', transform: 'translateY(40px)' },
+                                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                                },
+                                slideInLeft: {
+                                    '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                                    '100%': { opacity: '1', transform: 'translateX(0)' },
+                                },
+                                slideInRight: {
+                                    '0%': { opacity: '0', transform: 'translateX(50px)' },
+                                    '100%': { opacity: '1', transform: 'translateX(0)' },
+                                },
+                            }
+                        }
+                    }
+                }
+            </script>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap"
+                rel="stylesheet">
+            <style>
+                body {
+                    font-family: theme('fontFamily.sans');
+                    background-color: theme('colors.dark');
+                    color: theme('colors.textDark');
+                    overflow-x: hidden;
+                }
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    font-family: theme('fontFamily.heading');
+                    color: theme('colors.textDark');
+                }
+
+                .hero-card-backdrop {
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                }
+            </style>
+        </head>
+
+        <body>
+            <!-- index.html - Fully Mobile Compatible with Fixed Hero Section -->
+            <!DOCTYPE html>
+            <html lang="en" class="scroll-smooth">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>SiOn Technology - Innovating the Future</title>
+                <script src="https://cdn.tailwindcss.com"></script>
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                <script>
+                    tailwind.config = {
+                        theme: {
+                            extend: {
+                                colors: {
+                                    primary: '#00A8E8',
+                                    primaryHover: '#007EA7',
+                                    secondary: '#003459',
+                                    accent: '#00A8E8',
+                                    accentHover: '#007EA7',
+                                    light: '#CED4DA',
+                                    dark: '#121212',
+                                    textDark: '#E9ECEF',
+                                    textLight: '#212529',
+                                    cardBg: '#1A1A1A',
+                                    borderDark: '#343A40',
+                                    heroCardBg: 'rgba(20, 20, 20, 0.85)',
+                                },
+                                fontFamily: {
+                                    sans: ['Roboto', 'sans-serif'],
+                                    heading: ['Montserrat', 'sans-serif']
+                                },
+                                animation: {
+                                    'fade-in-down': 'fadeInDown 1s ease-out',
+                                    'fade-in-up': 'fadeInUp 1s ease-out',
+                                    'slide-in-left': 'slideInLeft 0.8s ease-out',
+                                    'slide-in-right': 'slideInRight 0.8s ease-out',
+                                },
+                                keyframes: {
+                                    fadeInDown: {
+                                        '0%': { opacity: '0', transform: 'translateY(-40px)' },
+                                        '100%': { opacity: '1', transform: 'translateY(0)' },
+                                    },
+                                    fadeInUp: {
+                                        '0%': { opacity: '0', transform: 'translateY(40px)' },
+                                        '100%': { opacity: '1', transform: 'translateY(0)' },
+                                    },
+                                    slideInLeft: {
+                                        '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                                        '100%': { opacity: '1', transform: 'translateX(0)' },
+                                    },
+                                    slideInRight: {
+                                        '0%': { opacity: '0', transform: 'translateX(50px)' },
+                                        '100%': { opacity: '1', transform: 'translateX(0)' },
+                                    },
+                                }
+                            }
+                        }
+                    }
+                </script>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap"
+                    rel="stylesheet">
+                <style>
+                    body {
+                        font-family: theme('fontFamily.sans');
+                        background-color: theme('colors.dark');
+                        color: theme('colors.textDark');
+                        overflow-x: hidden;
+                    }
+
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        font-family: theme('fontFamily.heading');
+                        color: theme('colors.textDark');
+                    }
+
+                    .hero-card-backdrop {
+                        backdrop-filter: blur(10px);
+                        -webkit-backdrop-filter: blur(10px);
+                    }
+                </style>
+            </head>
+            <!-- HERO SECTION -->
+            <section id="hero"
+                class="min-h-screen bg-cover bg-center flex items-center justify-center pt-20 relative px-4 sm:px-0"
+                style="background-image: url('https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=1740&q=80');">
+                <div class="absolute inset-0 bg-dark/50"></div>
+                <div class="container mx-auto relative z-10">
+                    <div
+                        class="w-full max-w-6xl mx-auto bg-heroCardBg hero-card-backdrop rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                        <!-- LEFT TEXT CONTENT -->
+                        <div
+                            class="w-full md:w-3/5 p-6 sm:p-10 lg:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                            <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                                Transform Your Vision with <span class="text-primary">SiOn Tech</span>
+                            </h1>
+                            <p class="text-sm sm:text-md lg:text-xl text-gray-200 mb-6 max-w-md">
+                                Delivering innovative technology solutions that drive growth and efficiency for your
+                                business.
+                            </p>
+                            <div
+                                class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center md:justify-start">
+                                <a href="#services"
+                                    class="bg-primary text-white text-sm font-semibold px-6 py-3 rounded-lg hover:bg-primaryHover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto text-center">
+                                    Discover Solutions
+                                </a>
+                                <a href="#contact"
+                                    class="bg-transparent border-2 border-primary text-primary text-sm font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto text-center">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                        <!-- RIGHT IMAGE CONTENT (hidden on mobile) -->
+                        <div class="hidden md:block w-full md:w-2/5 min-h-[250px] bg-cover bg-center animate-fade-in-up md:animate-slide-in-right"
+                            style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1740&q=80'); animation-delay: 0.2s;">
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden sm:block animate-fade-in-up"
+                    style="animation-delay: 0.9s;">
+                    <a href="#about" aria-label="Scroll down">
+                        <i class="fas fa-chevron-down text-primary text-3xl sm:text-4xl animate-bounce"></i>
+                    </a>
+                </div>
+            </section>
+
+
+
+
+            <!-- About Us Section -->
+            <section id="about" class="py-16 sm:py-20 lg:py-28 bg-cardBg animated-section px-4 sm:px-6"
+                style="transform: translateY(50px);">
+                <div class="container mx-auto">
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-textDark mb-4 sm:mb-6 section-title-underline">
+                        About <span class="text-primary">SiOn Technology</span></h2>
+                    <p class="text-center text-md sm:text-lg text-light mb-12 sm:mb-16 max-w-3xl mx-auto">Driving
+                        innovation
+                        through expertise, collaboration, and a commitment to excellence.</p>
+                    <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-10 lg:gap-16">
+                        <div class="md:w-1/2 animate-slide-in-left">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                                alt="Our Team at SiOn Technology" class="rounded-xl shadow-2xl w-full">
+                        </div>
+                        <div class="md:w-1/2 text-md sm:text-lg text-light animate-slide-in-right">
+                            <h3 class="text-2xl sm:text-3xl font-semibold text-textDark mb-4 sm:mb-6">Our Mission &
+                                Vision
+                            </h3>
+                            <p class="mb-4 sm:mb-6">Founded with a vision to transform industries through technology,
+                                SiOn
+                                Technology has rapidly grown into a trusted partner for businesses seeking innovative
+                                and
+                                reliable solutions. Our team of experts is dedicated to pushing the boundaries of what's
+                                possible.</p>
+                            <p class="mb-6 sm:mb-8">We believe in a collaborative approach, working closely with our
+                                clients
+                                to understand their unique challenges and deliver solutions that drive growth and
+                                efficiency. Our core values are <strong class="text-primary">innovation</strong>,
+                                <strong class="text-primary">integrity</strong>, and <strong
+                                    class="text-primary">customer
+                                    satisfaction</strong>.
+                            </p>
+                            <a href="#contact"
+                                class="bg-accent text-white px-8 py-3 sm:px-10 sm:py-4 rounded-full hover:bg-accentHover transition duration-300 inline-block text-md sm:text-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105">Partner
+                                With Us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
+            <section id="why-us" class="py-16 sm:py-20 lg:py-28 bg-dark animated-section px-4 sm:px-6"
+                style="transform: translateY(50px);">
+                <div class="container mx-auto">
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-textDark mb-4 sm:mb-6 section-title-underline">
+                        Why <span class="text-primary">Choose SiOn</span>?</h2>
+                    <p class="text-center text-md sm:text-lg text-light mb-12 sm:mb-16 max-w-3xl mx-auto">We deliver not
+                        just solutions, but a partnership geared for your success.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                        <div
+                            class="bg-cardBg p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary">
+                            <div class="text-primary text-4xl sm:text-5xl mb-4 sm:mb-6"><i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4">Innovative
+                                Solutions
+                            </h3>
+                            <p class="text-light text-sm sm:text-base">We leverage the latest technologies to create
+                                future-ready solutions tailored to your unique business needs.</p>
+                        </div>
+                        <div
+                            class="bg-cardBg p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-accent">
+                            <div class="text-accent text-4xl sm:text-5xl mb-4 sm:mb-6"><i class="fas fa-users-cog"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4">Expert Team</h3>
+                            <p class="text-light text-sm sm:text-base">Our passionate team of certified professionals
+                                brings
+                                years of industry experience and deep technical expertise.</p>
+                        </div>
+                        <div
+                            class="bg-cardBg p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary">
+                            <div class="text-primary text-4xl sm:text-5xl mb-4 sm:mb-6"><i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4">Client-Centric
+                                Approach
+                            </h3>
+                            <p class="text-light text-sm sm:text-base">Your success is our priority. We work
+                                collaboratively, ensuring transparency and delivering measurable results.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="py-16 sm:py-20 lg:py-28 bg-cardBg animated-section px-4 sm:px-6"
+                style="transform: translateY(50px);">
+                <div class="container mx-auto">
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-textDark mb-4 sm:mb-6 section-title-underline">
+                        Our Core <span class="text-primary">Services</span></h2>
+                    <p class="text-center text-md sm:text-lg text-light mb-12 sm:mb-16 max-w-3xl mx-auto">Comprehensive
+                        technology services designed to elevate your business and drive growth.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                        <div
+                            class="bg-dark p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-borderDark hover:border-primary">
+                            <div
+                                class="text-primary text-5xl sm:text-6xl mb-4 sm:mb-6 text-center transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4 text-center">Custom
+                                Software</h3>
+                            <p class="text-light text-center text-sm sm:text-md">Tailored software solutions to meet
+                                specific business requirements, enhancing productivity.</p>
+                        </div>
+                        <div
+                            class="bg-dark p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-borderDark hover:border-primary">
+                            <div
+                                class="text-primary text-5xl sm:text-6xl mb-4 sm:mb-6 text-center transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4 text-center">Cloud
+                                Solutions</h3>
+                            <p class="text-light text-center text-sm sm:text-md">Scalable and secure cloud services,
+                                including migration, management, and optimization.</p>
+                        </div>
+                        <div
+                            class="bg-dark p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-borderDark hover:border-primary">
+                            <div
+                                class="text-primary text-5xl sm:text-6xl mb-4 sm:mb-6 text-center transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4 text-center">
+                                Cybersecurity</h3>
+                            <p class="text-light text-center text-sm sm:text-md">Comprehensive security solutions to
+                                protect
+                                your digital assets from evolving threats.</p>
+                        </div>
+                        <div
+                            class="bg-dark p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-borderDark hover:border-primary">
+                            <div
+                                class="text-primary text-5xl sm:text-6xl mb-4 sm:mb-6 text-center transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-textDark mb-3 sm:mb-4 text-center">Data
+                                Analytics & AI</h3>
+                            <p class="text-light text-center text-sm sm:text-md">Unlock data power with advanced
+                                analytics
+                                and artificial intelligence solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="py-16 sm:py-20 lg:py-28 bg-dark animated-section px-4 sm:px-6"
+                style="transform: translateY(50px);">
+                <div class="container mx-auto">
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-textDark mb-4 sm:mb-6 section-title-underline">
+                        Our <span class="text-primary">Work</span></h2>
+                    <p class="text-center text-md sm:text-lg text-light mb-12 sm:mb-16 max-w-3xl mx-auto">A glimpse into
+                        some of the innovative projects we've delivered, showcasing our commitment to excellence and
+                        cutting-edge technology.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                        <div
+                            class="group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 bg-cardBg">
+                            <div class="relative h-72 sm:h-80">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                                    alt="School Management System - ERP System"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 sm:p-6">
+                                    <h3
+                                        class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                                        School Management System</h3>
+                                    <p
+                                        class="text-gray-300 text-sm sm:text-base transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
+                                        Portal for Teachers, Princpal and Director </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 bg-cardBg">
+                            <div class="relative h-72 sm:h-80">
+                                <img src="https://www.jiobp.com/sites/default/files/2022-06/fleet-charging1_1.png"
+                                    alt="CNG-EV Powerstation Slot Booking"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 sm:p-6">
+                                    <h3
+                                        class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                                        CNG-EV Powerstation Slot Booking</h3>
+                                    <p
+                                        class="text-gray-300 text-sm sm:text-base transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
+                                        Platform for Booking slots for CNG and EV Powerstations</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 bg-cardBg">
+                            <div class="relative h-72 sm:h-80">
+                                <img src="Mart nav system.png" alt="Mart Navigation System"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 sm:p-6">
+                                    <h3
+                                        class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                                        Mart Navigation System</h3>
+                                    <p
+                                        class="text-gray-300 text-sm sm:text-base transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
+                                        Navigation for Shopping Marts to Save Customers Time </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact"
+                class="py-16 sm:py-20 lg:py-28 bg-cover bg-fixed bg-center relative animated-section px-4 sm:px-6"
+                style="background-image: url('https://images.unsplash.com/photo-1528747045269-390fe33c19f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); transform: translateY(50px);">
+                <div class="absolute inset-0 bg-secondary opacity-90"></div>
+                <div class="container mx-auto relative z-10">
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-4 sm:mb-6 section-title-underline after:bg-white">
+                        Get in <span class="border-b-4 border-white pb-1">Touch</span></h2>
+                    <p class="text-center text-md sm:text-lg text-gray-100 mb-10 sm:mb-12 max-w-2xl mx-auto">We'd love
+                        to
+                        hear from you. Reach out to discuss your next project or to learn more about our services.</p>
+                    <form id="contact-form" action="mailto:onkarnagargoje25@gmail.com" method="POST"
+                        enctype="text/plain"
+                        class="max-w-2xl mx-auto bg-cardBg p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                            <div>
+                                <label for="name" class="block text-light font-semibold mb-1.5 sm:mb-2">Your
+                                    Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name"
+                                    class="w-full px-3 py-2.5 sm:px-4 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow contact-form-field"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-light font-semibold mb-1.5 sm:mb-2">Your
+                                    Email</label>
+                                <input type="email" id="email" name="from_email" placeholder="email@example.com"
+                                    class="w-full px-3 py-2.5 sm:px-4 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow contact-form-field"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="mb-4 sm:mb-6">
+                            <label for="subject" class="block text-light font-semibold mb-1.5 sm:mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Inquiry about Web Development"
+                                class="w-full px-3 py-2.5 sm:px-4 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow contact-form-field"
+                                required>
+                        </div>
+                        <div class="mb-6 sm:mb-8">
+                            <label for="message" class="block text-light font-semibold mb-1.5 sm:mb-2">Your
+                                Message</label>
+                            <textarea id="message" name="body" rows="4" sm:rows="5"
+                                placeholder="Tell us more about your project..."
+                                class="w-full px-3 py-2.5 sm:px-4 sm:py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow resize-none contact-form-field"
+                                required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white text-md sm:text-lg font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-primaryHover transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 shadow-md hover:shadow-lg transform hover:scale-105">Send
+                            Message</button>
+                    </form>
+                </div>
+            </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-400 py-16 sm:py-20 px-4 sm:px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10 sm:mb-12">
+                <div class="bg-cardBg p-4 sm:p-6 rounded-lg shadow-md text-center md:text-left">
+                    <h3 class="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">SiOn<span
+                            class="text-accent">Tech</span></h3>
+                    <p class="text-xs sm:text-sm text-light">Innovating the Future, Today. We are committed to
+                        delivering excellence and driving technological advancements for a brighter tomorrow.</p>
+                </div>
+                <div class="bg-cardBg p-4 sm:p-6 rounded-lg shadow-md text-center md:text-left">
+                    <h4 class="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-5">Quick Links</h4>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="#about"
+                                class="text-light hover:text-primary transition duration-300 text-sm sm:text-base">About
+                                Us</a></li>
+                        <li><a href="#services"
+                                class="text-light hover:text-primary transition duration-300 text-sm sm:text-base">Services</a>
+                        </li>
+                        <li><a href="#portfolio"
+                                class="text-light hover:text-primary transition duration-300 text-sm sm:text-base">Portfolio</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-light hover:text-primary transition duration-300 text-sm sm:text-base">Privacy
+                                Policy</a></li>
+                        <li><a href="#"
+                                class="text-light hover:text-primary transition duration-300 text-sm sm:text-base">Terms
+                                of Service</a></li>
+                    </ul>
+                </div>
+                <div class="bg-cardBg p-4 sm:p-6 rounded-lg shadow-md text-center md:text-left">
+                    <h4 class="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-5">Contact Info</h4>
+                    <ul class="space-y-2 sm:space-y-3 text-light text-sm sm:text-base">
+                        <li class="flex items-center justify-center md:justify-start"><i
+                                class="fas fa-map-marker-alt mr-2 sm:mr-3 text-primary"></i>Nanded, Maharashtra- 431 605
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start"><i
+                                class="fas fa-phone-alt mr-2 sm:mr-3 text-primary"></i>+91 95118 41275</li>
+                        <li class="flex items-center justify-center md:justify-start"><i
+                                class="fas fa-envelope mr-2 sm:mr-3 text-primary"></i>siontechnologies01@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="bg-cardBg p-4 sm:p-6 rounded-lg shadow-md text-center md:text-left">
+                    <h4 class="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-5">Connect With Us</h4>
+                    <div class="flex space-x-4 sm:space-x-5 justify-center md:justify-start">
+                        <a href="#" class="text-light hover:text-primary transition duration-300 text-xl sm:text-2xl"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light hover:text-primary transition duration-300 text-xl sm:text-2xl"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light hover:text-primary transition duration-300 text-xl sm:text-2xl"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-light hover:text-primary transition duration-300 text-xl sm:text-2xl"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-borderDark pt-8 sm:pt-10 text-center">
+                <p class="text-xs sm:text-sm text-light">&copy; <span id="current-year"></span> SiOn Technologies. All
+                    Rights Reserved. Designed with <i class="fas fa-heart text-red-500"></i> by Sion Technologies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
