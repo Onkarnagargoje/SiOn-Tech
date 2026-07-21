@@ -1,0 +1,28 @@
+export const TECHNOLOGIES = [
+  { name: 'React', category: 'Frontend', color: '#61DAFB' },
+  { name: 'Next.js', category: 'Frontend', color: '#FFFFFF' },
+  { name: 'TypeScript', category: 'Frontend', color: '#3178C6' },
+  { name: 'Tailwind CSS', category: 'Frontend', color: '#06B6D4' },
+  { name: 'Three.js', category: 'Frontend', color: '#000000' },
+  { name: 'Flutter', category: 'Mobile', color: '#02569B' },
+  { name: 'React Native', category: 'Mobile', color: '#61DAFB' },
+  { name: 'Node.js', category: 'Backend', color: '#339933' },
+  { name: 'Express', category: 'Backend', color: '#FFFFFF' },
+  { name: 'Python', category: 'Backend', color: '#3776AB' },
+  { name: 'Java', category: 'Backend', color: '#ED8B00' },
+  { name: 'Go', category: 'Backend', color: '#00ADD8' },
+  { name: 'MongoDB', category: 'Database', color: '#47A248' },
+  { name: 'PostgreSQL', category: 'Database', color: '#4169E1' },
+  { name: 'Firebase', category: 'Database', color: '#FFCA28' },
+  { name: 'Redis', category: 'Database', color: '#DC382D' },
+  { name: 'AWS', category: 'Cloud', color: '#FF9900' },
+  { name: 'Docker', category: 'Cloud', color: '#2496ED' },
+  { name: 'Kubernetes', category: 'Cloud', color: '#326CE5' },
+  { name: 'GitHub', category: 'DevOps', color: '#FFFFFF' },
+  { name: 'AI / LLMs', category: 'AI', color: '#3B82F6' },
+  { name: 'Machine Learning', category: 'AI', color: '#06B6D4' },
+  { name: 'TensorFlow', category: 'AI', color: '#FF6F00' },
+  { name: 'OpenAI', category: 'AI', color: '#10A37F' },
+]
+
+export const TECH_CATEGORIES = ['All', 'Frontend', 'Mobile', 'Backend', 'Database', 'Cloud', 'DevOps', 'AI']
