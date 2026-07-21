@@ -11,10 +11,8 @@ export const SITE = {
   phoneTel: '+919637531275',
   address: 'Remote-first · Worldwide delivery',
   social: {
-    linkedin: 'https://linkedin.com/company/sion-tech',
-    twitter: 'https://twitter.com/siontech',
-    github: 'https://github.com/sion-tech',
-    instagram: 'https://instagram.com/siontech',
+    linkedin: 'https://www.linkedin.com/company/sion-tech-solutions/',
+    instagram: 'https://www.instagram.com/siontech_solutions/',
   },
 }
 

@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
-import { IconGitHub, IconInstagram, IconLinkedIn, IconX } from '../ui/SocialIcons'
+import { IconInstagram, IconLinkedIn } from '../ui/SocialIcons'
 import { NAV_LINKS, SITE } from '../../data/site'
 import { Container, Text, Logo } from '../ui'
 
 const social = [
   { Icon: IconLinkedIn, href: SITE.social.linkedin, label: 'LinkedIn' },
-  { Icon: IconX, href: SITE.social.twitter, label: 'X' },
-  { Icon: IconGitHub, href: SITE.social.github, label: 'GitHub' },
   { Icon: IconInstagram, href: SITE.social.instagram, label: 'Instagram' },
 ]
 
