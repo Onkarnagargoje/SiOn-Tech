@@ -34,7 +34,7 @@ export default function Layout() {
       </a>
       <Navbar />
       <PageTransition key={location.pathname}>
-        <main id="main-content" className={isHome ? '' : 'pt-20'}>
+        <main id="main-content" className={isHome ? '' : 'pt-24 sm:pt-28'}>
           <Outlet />
         </main>
       </PageTransition>

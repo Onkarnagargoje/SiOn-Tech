@@ -22,7 +22,7 @@ export default function Contact() {
         path="/contact"
       />
 
-      <Section tone="cream" className="!pb-6 !pt-10 sm:!pb-8">
+      <Section tone="cream" className="!pb-6 !pt-6 sm:!pb-8 sm:!pt-10">
         <Container>
           <SectionHeader
             eyebrow="Contact"

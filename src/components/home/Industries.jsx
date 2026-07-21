@@ -41,7 +41,11 @@ export default function Industries() {
             title="Built for organizations that need clarity online"
             description="Whether you run a business, college or school, we shape the site around how your audience actually uses it."
           />
-          <Button to="/contact" variant="ink" className="!rounded-full shrink-0 self-start lg:self-auto">
+          <Button
+            to="/contact"
+            variant="ink"
+            className="!w-full !rounded-full shrink-0 self-stretch sm:!w-auto sm:self-start lg:self-auto"
+          >
             Discuss your project
           </Button>
         </div>

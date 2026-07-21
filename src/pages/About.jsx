@@ -55,7 +55,7 @@ export default function About() {
         path="/about"
       />
 
-      <Section tone="cream" className="!pt-10">
+      <Section tone="cream" className="!pt-6 sm:!pt-10">
         <Container>
           <SectionHeader
             eyebrow="About"

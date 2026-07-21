@@ -141,7 +141,7 @@ export default function ProcessCarousel({
             return (
               <Reveal key={step.step} delay={i * 0.05} className="h-full">
                 <article
-                  className={`relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[2rem] p-7 sm:min-h-[28rem] sm:p-8 lg:p-9 ${tone.card}`}
+                  className={`relative flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] p-6 sm:min-h-[26rem] sm:p-8 lg:min-h-[28rem] lg:p-9 ${tone.card}`}
                 >
                   <CardPattern type={tone.pattern} dark={tone.dark} />
 
@@ -149,12 +149,12 @@ export default function ProcessCarousel({
                     {step.step}
                   </p>
 
-                  <h3 className="relative mt-6 font-display text-[1.85rem] font-bold leading-[1.15] tracking-tight sm:text-[2rem]">
+                  <h3 className="relative mt-5 font-display text-[1.55rem] font-bold leading-[1.15] tracking-tight sm:mt-6 sm:text-[2rem]">
                     {step.title}
                   </h3>
 
                   <div
-                    className={`relative mt-10 flex h-12 w-12 items-center justify-center rounded-2xl border ${tone.iconWrap}`}
+                    className={`relative mt-8 flex h-12 w-12 items-center justify-center rounded-2xl border sm:mt-10 ${tone.iconWrap}`}
                   >
                     <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                   </div>

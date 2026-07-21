@@ -17,7 +17,7 @@ export default function ServiceCard({ service }) {
   const Icon = icons[service.id] || Globe2
 
   return (
-    <Card hover className="group flex h-full flex-col p-8 sm:p-10">
+    <Card hover className="group flex h-full flex-col p-6 sm:p-10">
       <div className="flex items-start justify-between gap-3">
         <IconBox
           tone={service.accent}

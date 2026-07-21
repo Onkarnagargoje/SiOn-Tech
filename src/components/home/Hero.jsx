@@ -75,14 +75,14 @@ export default function Hero() {
         <div className="hero-grain absolute inset-0 opacity-[0.035]" />
       </div>
 
-      <Container wide className="relative flex flex-col items-center pt-28 text-center lg:pt-36">
+      <Container wide className="relative flex flex-col items-center px-1 pt-24 text-center sm:pt-28 lg:pt-36">
         <p className="hero-in text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
           SiOn Tech Solutions
         </p>
 
         <h1
           id="hero-heading"
-          className="hero-in mt-5 max-w-4xl font-display text-[clamp(2.5rem,6.2vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-white"
+          className="hero-in mt-5 max-w-4xl font-display text-[clamp(2rem,8vw,4.5rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-white"
         >
           Custom websites that look{' '}
           <span className="bg-gradient-to-r from-white via-brand-aqua to-white bg-[length:200%_100%] bg-clip-text text-transparent animate-shimmer-text">
@@ -96,20 +96,20 @@ export default function Hero() {
           and maintain them after launch.
         </p>
 
-        <div className="hero-in mt-9 flex flex-wrap items-center justify-center gap-3">
-          <MagneticButton>
+        <div className="hero-in mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+          <MagneticButton className="w-full sm:w-auto">
             <Button
               to="/contact"
-              className="!rounded-full !bg-brand-aqua !px-7 !py-3.5 !text-[15px] !font-semibold !text-[#052e2b] !shadow-[0_0_40px_rgba(45,212,191,0.35)] hover:!bg-teal-300"
+              className="!w-full !rounded-full !bg-brand-aqua !px-7 !py-3.5 !text-[15px] !font-semibold !text-[#052e2b] !shadow-[0_0_40px_rgba(45,212,191,0.35)] hover:!bg-teal-300 sm:!w-auto"
             >
               Book a free call
             </Button>
           </MagneticButton>
-          <MagneticButton strength={0.2}>
+          <MagneticButton strength={0.2} className="w-full sm:w-auto">
             <Button
               to="/services"
               variant="ghost"
-              className="!rounded-full !border-white/15 !bg-transparent !px-7 !py-3.5 !text-[15px] !text-zinc-200 hover:!bg-white/[0.06]"
+              className="!w-full !rounded-full !border-white/15 !bg-transparent !px-7 !py-3.5 !text-[15px] !text-zinc-200 hover:!bg-white/[0.06] sm:!w-auto"
             >
               View services
             </Button>
@@ -131,31 +131,31 @@ export default function Hero() {
               {metrics.map((item) => (
                 <div
                   key={item.label}
-                  className="px-5 py-6 transition-colors duration-300 hover:bg-brand-mist/50 sm:px-6 sm:py-7"
+                  className="px-4 py-5 transition-colors duration-300 hover:bg-brand-mist/50 sm:px-6 sm:py-7"
                 >
-                  <p className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl">
+                  <p className="font-display text-2xl font-bold tracking-tight text-brand-ink sm:text-4xl">
                     {item.value}
                   </p>
-                  <p className="mt-2 text-base text-brand-slate sm:text-lg">{item.label}</p>
+                  <p className="mt-2 text-sm text-brand-slate sm:text-lg">{item.label}</p>
                 </div>
               ))}
             </div>
 
             {/* Process */}
-            <div className="border-b border-zinc-100 bg-brand-mist/40 px-5 py-6 sm:px-8 sm:py-7">
-              <div className="mb-5 flex items-center justify-between gap-4">
+            <div className="border-b border-zinc-100 bg-brand-mist/40 px-4 py-6 sm:px-8 sm:py-7">
+              <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-slate">
                   Delivery process
                 </p>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-1.5 text-base font-semibold text-brand-teal hover:text-brand-ink"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal hover:text-brand-ink sm:text-base"
                 >
                   How we work
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-              <ol className="grid gap-4 sm:grid-cols-5 sm:gap-3">
+              <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 sm:gap-4">
                 {PROCESS.map((step, i) => (
                   <li key={step.title} className="relative flex flex-col sm:items-start">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-ink text-sm font-bold text-white">
@@ -171,17 +171,17 @@ export default function Hero() {
             </div>
 
             {/* Focus areas */}
-            <div className="flex flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
+            <div className="flex flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
               <div className="max-w-xl">
                 <p className="text-base leading-relaxed text-brand-ink sm:text-lg">
                   Tell us what you need — a new site, a portal, a redesign, or ongoing care. We’ll
                   reply with a clear scope and next step.
                 </p>
               </div>
-              <MagneticButton strength={0.25}>
+              <MagneticButton strength={0.25} className="w-full sm:w-auto">
                 <Link
                   to="/contact"
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-navy"
+                  className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-brand-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-navy sm:w-auto"
                 >
                   Start your project
                   <ArrowRight className="h-4 w-4" />

@@ -3,6 +3,7 @@ import { SITE } from '../../data/site'
 
 /**
  * SiOn wordmark — Montserrat “Sı” + pill “O” + “n”, teal square tittle.
+ * Pill SVG uses em units so it scales with text on every breakpoint.
  */
 export default function Logo({
   to = '/',
@@ -12,42 +13,14 @@ export default function Logo({
   className = '',
 }) {
   const sizes = {
-    sm: {
-      text: 'text-[1.5rem]',
-      pillH: 16,
-      pillW: 40,
-      stroke: 3.2,
-      tittle: 6,
-      url: 'text-[8px]',
-      gap: 'gap-[0.12em]',
-    },
-    md: {
-      text: 'text-[2.15rem] sm:text-[2.35rem]',
-      pillH: 22,
-      pillW: 60,
-      stroke: 4,
-      tittle: 8,
-      url: 'text-[10px]',
+    sm: { text: 'text-[1.5rem]', url: 'text-[8px]', gap: 'gap-[0.12em]' },
+    md: { text: 'text-[1.85rem] sm:text-[2.25rem]', url: 'text-[10px]', gap: 'gap-[0.14em]' },
+    nav: {
+      text: 'text-[1.85rem] sm:text-[2.45rem] lg:text-[2.9rem]',
+      url: 'text-[11px]',
       gap: 'gap-[0.14em]',
     },
-    nav: {
-      text: 'text-[2.85rem] sm:text-[3.25rem]',
-      pillH: 30,
-      pillW: 80,
-      stroke: 5,
-      tittle: 10,
-      url: 'text-[11px]',
-      gap: 'gap-[0.16em]',
-    },
-    lg: {
-      text: 'text-5xl sm:text-6xl',
-      pillH: 32,
-      pillW: 78,
-      stroke: 5,
-      tittle: 11,
-      url: 'text-xs sm:text-sm',
-      gap: 'gap-[0.16em]',
-    },
+    lg: { text: 'text-4xl sm:text-5xl', url: 'text-xs sm:text-sm', gap: 'gap-[0.16em]' },
   }
   const s = sizes[size] || sizes.md
   const ink = light ? '#FFFFFF' : '#0B1220'
@@ -65,35 +38,27 @@ export default function Logo({
             <span aria-hidden>ı</span>
             <span
               aria-hidden
-              className="absolute left-1/2 rounded-[2px]"
-              style={{
-                width: s.tittle,
-                height: s.tittle,
-                background: teal,
-                top: '0.08em',
-                transform: 'translateX(-50%)',
-              }}
+              className="absolute left-1/2 top-[0.08em] h-[0.28em] w-[0.28em] -translate-x-1/2 rounded-[0.06em]"
+              style={{ background: teal }}
             />
           </span>
           <span className="sr-only">i</span>
         </span>
 
         <svg
-          width={s.pillW}
-          height={s.pillH}
-          viewBox={`0 0 ${s.pillW} ${s.pillH}`}
+          viewBox="0 0 80 30"
           fill="none"
           aria-hidden
-          className="shrink-0"
+          className="mx-[0.02em] h-[0.95em] w-[2.55em] shrink-0"
         >
           <rect
-            x={s.stroke / 2}
-            y={s.stroke / 2}
-            width={s.pillW - s.stroke}
-            height={s.pillH - s.stroke}
-            rx={(s.pillH - s.stroke) / 2}
+            x="3.5"
+            y="3.5"
+            width="73"
+            height="23"
+            rx="11.5"
             stroke={ink}
-            strokeWidth={s.stroke}
+            strokeWidth="7"
           />
         </svg>
 
@@ -102,7 +67,7 @@ export default function Logo({
 
       {showUrl && (
         <span
-          className={`mt-1.5 font-logo font-semibold tracking-[0.06em] ${s.url}`}
+          className={`mt-1.5 max-w-full break-all font-logo font-semibold tracking-[0.06em] ${s.url}`}
           style={{ color: light ? 'rgba(255,255,255,0.7)' : '#4B5C6B' }}
         >
           www.siontechsolutions.com
@@ -120,7 +85,11 @@ export default function Logo({
   }
 
   return (
-    <Link to={to} className="inline-flex transition-opacity hover:opacity-85" aria-label={`${SITE.name} home`}>
+    <Link
+      to={to}
+      className="inline-flex min-w-0 max-w-[72%] shrink transition-opacity hover:opacity-85 sm:max-w-none"
+      aria-label={`${SITE.name} home`}
+    >
       {mark}
     </Link>
   )

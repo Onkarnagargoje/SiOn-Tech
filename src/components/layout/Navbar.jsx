@@ -88,10 +88,10 @@ export default function Navbar() {
       <nav
         className={`mx-auto flex w-full items-center transition-all duration-[480ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           floating
-            ? 'h-[88px] max-w-[1040px] rounded-full border border-black/[0.06] bg-white/90 px-4 text-brand-ink shadow-[0_8px_30px_rgba(11,18,32,0.1)] backdrop-blur-xl sm:h-[92px] sm:px-6'
+            ? 'h-[72px] max-w-[1040px] rounded-full border border-black/[0.06] bg-white/90 px-3 text-brand-ink shadow-[0_8px_30px_rgba(11,18,32,0.1)] backdrop-blur-xl sm:h-[84px] sm:px-5 lg:h-[92px] lg:px-6'
             : overHero
-              ? 'h-[92px] border-b border-white/10 bg-transparent px-5 text-white sm:h-28 sm:px-8 lg:px-12'
-              : 'h-[92px] border-b border-brand-line/80 bg-brand-cream/90 px-5 text-brand-ink backdrop-blur-md sm:h-28 sm:px-8 lg:px-12'
+              ? 'h-[72px] border-b border-white/10 bg-transparent px-4 text-white sm:h-[88px] sm:px-8 lg:h-28 lg:px-12'
+              : 'h-[72px] border-b border-brand-line/80 bg-brand-cream/90 px-4 text-brand-ink backdrop-blur-md sm:h-[88px] sm:px-8 lg:h-28 lg:px-12'
         }`}
         aria-label="Primary"
       >
@@ -183,11 +183,11 @@ export default function Navbar() {
       <div
         className={`mx-auto overflow-hidden transition-all duration-300 ease-out lg:hidden ${
           open
-            ? 'mt-2 max-h-[480px] opacity-100'
+            ? 'mt-2 max-h-[min(520px,calc(100dvh-6rem))] opacity-100'
             : 'pointer-events-none mt-0 max-h-0 opacity-0'
         } ${floating ? 'max-w-[960px]' : 'max-w-7xl px-3'}`}
       >
-        <div className="rounded-2xl border border-brand-line bg-white p-3 shadow-[0_12px_40px_rgba(11,18,32,0.12)]">
+        <div className="max-h-[min(520px,calc(100dvh-6rem))] overflow-y-auto rounded-2xl border border-brand-line bg-white p-3 shadow-[0_12px_40px_rgba(11,18,32,0.12)]">
           <ul className="flex flex-col">
             {NAV_LINKS.map((link) => (
               <li key={`m-${link.path}-${link.hash || link.label}`}>
