@@ -23,8 +23,7 @@ export default function Blog() {
       const matchesQ =
         !q ||
         p.title.toLowerCase().includes(q) ||
-        p.excerpt.toLowerCase().includes(q) ||
-        p.author.toLowerCase().includes(q)
+        p.excerpt.toLowerCase().includes(q)
       return matchesCat && matchesQ
     })
   }, [query, category])
@@ -121,8 +120,7 @@ export default function Blog() {
                     <p className="mt-3 flex-1 text-base leading-relaxed text-brand-slate">
                       {post.excerpt}
                     </p>
-                    <div className="mt-6 flex items-center justify-between border-t border-brand-line pt-4 text-sm text-brand-slate">
-                      <span className="font-medium text-brand-ink">{post.author}</span>
+                    <div className="mt-6 border-t border-brand-line pt-4 text-sm text-brand-slate">
                       <time dateTime={post.date}>
                         {new Date(post.date).toLocaleDateString('en-US', {
                           month: 'short',

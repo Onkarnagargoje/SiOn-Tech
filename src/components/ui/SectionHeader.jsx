@@ -16,7 +16,7 @@ export default function SectionHeader({
   const alignCls = align === 'center' ? 'text-center mx-auto items-center' : 'text-left items-start'
 
   return (
-    <Reveal className={`flex max-w-2xl flex-col gap-3 ${alignCls} ${className}`}>
+    <Reveal className={`flex w-full max-w-2xl flex-col gap-3 ${alignCls} ${className}`}>
       {eyebrow && (
         <Eyebrow accent={accent} light={light}>
           {eyebrow}

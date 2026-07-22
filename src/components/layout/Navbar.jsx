@@ -154,10 +154,9 @@ export default function Navbar() {
             <Button
               to="/contact"
               variant={overHero ? 'soft' : 'primary'}
-              className={`hidden !rounded-full !font-bold lg:inline-flex ${
-                floating
-                  ? '!px-7 !py-3.5 !text-base sm:!text-lg'
-                  : '!px-8 !py-4 !text-lg'
+              size="lg"
+              className={`hidden !font-bold lg:inline-flex ${
+                floating ? '!px-8 !py-3.5 !text-base' : ''
               }`}
             >
               Get a quote
@@ -221,7 +220,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <Button to="/contact" className="mt-2 w-full !rounded-full !py-3.5 !text-base !font-bold">
+          <Button to="/contact" className="mt-2 w-full !font-bold" size="lg">
             Get a quote
           </Button>
         </div>

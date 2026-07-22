@@ -44,7 +44,9 @@ export default function Industries() {
           <Button
             to="/contact"
             variant="ink"
-            className="!w-full !rounded-full shrink-0 self-stretch sm:!w-auto sm:self-start lg:self-auto"
+            size="lg"
+            icon
+            className="!w-full shrink-0 self-stretch sm:!w-auto sm:self-start lg:self-auto"
           >
             Discuss your project
           </Button>

@@ -17,7 +17,7 @@ const Section = forwardRef(function Section(
       ref={ref}
       id={id}
       aria-labelledby={ariaLabelledby}
-      className={`py-20 sm:py-24 lg:py-32 ${tones[tone] || tones.cream} ${className}`}
+      className={`py-14 sm:py-20 lg:py-28 ${tones[tone] || tones.cream} ${className}`}
     >
       {children}
     </section>

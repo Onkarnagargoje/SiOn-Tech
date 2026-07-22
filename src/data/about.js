@@ -4,27 +4,6 @@ export const COMPANY = {
   audiences: ['Businesses', 'Colleges', 'Schools'],
 }
 
-export const TEAM = [
-  {
-    name: 'Arjun Mehta',
-    role: 'Founder',
-    bio: 'Leads client partnerships and delivery. Focused on clear scope, premium craft and websites that convert.',
-    initials: 'AM',
-  },
-  {
-    name: 'Sofia Reyes',
-    role: 'Design Lead',
-    bio: 'Shapes layouts and brand systems that feel professional and easy for real users.',
-    initials: 'SR',
-  },
-  {
-    name: 'Kenji Tanaka',
-    role: 'Engineering Lead',
-    bio: 'Builds clean, responsive sites and secure portals with performance and SEO in mind.',
-    initials: 'KT',
-  },
-]
-
 export const VALUES = [
   {
     title: 'Clarity first',

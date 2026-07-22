@@ -25,20 +25,21 @@ export default function CTASection({
               SiOn Tech Solutions
             </p>
 
-            <h2 className="relative mt-3 font-display text-[clamp(1.65rem,5vw,2.75rem)] font-bold tracking-tight text-white">
+            <h2 className="relative mt-4 font-display text-[clamp(1.65rem,5vw,2.75rem)] font-bold tracking-tight text-white leading-[1.15]">
               {title}
             </h2>
 
-            <p className="relative mx-auto mt-3 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg lg:text-xl">
+            <p className="relative mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 sm:mt-6 sm:text-lg sm:leading-8 lg:text-xl">
               {description}
             </p>
 
-            <div className="relative mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+            <div className="relative mt-8 flex flex-col items-stretch gap-3.5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
               <MagneticButton className="w-full sm:w-auto">
                 <Button
                   to={primaryTo}
                   variant="soft"
-                  className="!w-full !rounded-full !px-8 !py-3.5 !text-base !shadow-[0_0_36px_rgba(45,212,191,0.22)] sm:!w-auto"
+                  size="lg"
+                  className="!w-full !shadow-[0_0_40px_rgba(45,212,191,0.28)] sm:!w-auto"
                   icon
                 >
                   {primaryLabel}
@@ -48,7 +49,8 @@ export default function CTASection({
                 <Button
                   to={secondaryTo}
                   variant="ghost"
-                  className="!w-full !rounded-full !px-8 !py-3.5 !text-base sm:!w-auto"
+                  size="lg"
+                  className="!w-full sm:!w-auto"
                 >
                   {secondaryLabel}
                 </Button>

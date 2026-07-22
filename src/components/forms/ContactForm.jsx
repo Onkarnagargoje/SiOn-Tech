@@ -68,7 +68,8 @@ export default function ContactForm({
         <Button
           type="submit"
           icon
-          className="!rounded-full w-full sm:w-auto"
+          size="lg"
+          className="w-full sm:w-auto"
           disabled={sending}
         >
           {sending ? 'Sending…' : submitLabel}

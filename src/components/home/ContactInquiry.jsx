@@ -70,7 +70,7 @@ export default function ContactInquiry() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="mt-2 block break-all text-base font-bold text-brand-ink hover:text-brand-teal sm:text-lg"
+                        className="mt-2 block whitespace-nowrap text-sm font-bold text-brand-ink hover:text-brand-teal sm:text-base md:text-lg"
                       >
                         {item.value}
                       </a>

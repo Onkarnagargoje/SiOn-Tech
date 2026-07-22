@@ -63,7 +63,7 @@ export default function Services() {
                     </ul>
                   </div>
                   <div className="flex items-end lg:col-span-3 lg:justify-end">
-                    <Button to="/contact" variant={i % 2 ? 'ink' : 'primary'} icon>
+                    <Button to="/contact" variant={i % 2 ? 'ink' : 'primary'} size="lg" icon>
                       Get a quote
                     </Button>
                   </div>

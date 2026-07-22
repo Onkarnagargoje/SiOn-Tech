@@ -7,7 +7,6 @@ export const BLOG_POSTS = [
     category: 'AI',
     date: '2026-06-12',
     readTime: '8 min',
-    author: 'Lucas Berg',
   },
   {
     id: 'performance-as-brand',
@@ -17,7 +16,6 @@ export const BLOG_POSTS = [
     category: 'Engineering',
     date: '2026-05-28',
     readTime: '6 min',
-    author: 'Kenji Tanaka',
   },
   {
     id: 'designing-for-trust',
@@ -27,7 +25,6 @@ export const BLOG_POSTS = [
     category: 'Design',
     date: '2026-05-10',
     readTime: '7 min',
-    author: 'Sofia Reyes',
   },
   {
     id: 'cloud-cost-discipline',
@@ -37,7 +34,6 @@ export const BLOG_POSTS = [
     category: 'Cloud',
     date: '2026-04-22',
     readTime: '9 min',
-    author: 'Amara Okonkwo',
   },
   {
     id: 'hiring-engineers-who-ship',
@@ -47,7 +43,6 @@ export const BLOG_POSTS = [
     category: 'Culture',
     date: '2026-04-05',
     readTime: '5 min',
-    author: 'Arjun Mehta',
   },
   {
     id: 'api-as-product',
@@ -57,7 +52,6 @@ export const BLOG_POSTS = [
     category: 'Engineering',
     date: '2026-03-18',
     readTime: '6 min',
-    author: 'Kenji Tanaka',
   },
 ]
 

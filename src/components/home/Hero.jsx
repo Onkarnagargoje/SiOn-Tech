@@ -75,7 +75,7 @@ export default function Hero() {
         <div className="hero-grain absolute inset-0 opacity-[0.035]" />
       </div>
 
-      <Container wide className="relative flex flex-col items-center px-1 pt-24 text-center sm:pt-28 lg:pt-36">
+      <Container wide className="relative flex flex-col items-center pt-[5.5rem] text-center sm:pt-28 lg:pt-36">
         <p className="hero-in text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
           SiOn Tech Solutions
         </p>
@@ -96,11 +96,11 @@ export default function Hero() {
           and maintain them after launch.
         </p>
 
-        <div className="hero-in mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+        <div className="hero-in mt-9 flex w-full max-w-lg flex-col items-stretch gap-3.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
           <MagneticButton className="w-full sm:w-auto">
             <Button
               to="/contact"
-              className="!w-full !rounded-full !bg-brand-aqua !px-7 !py-3.5 !text-[15px] !font-semibold !text-[#052e2b] !shadow-[0_0_40px_rgba(45,212,191,0.35)] hover:!bg-teal-300 sm:!w-auto"
+              className="!w-full !rounded-full !bg-brand-aqua !px-9 !py-4 !text-base !font-semibold !text-[#052e2b] !shadow-[0_0_44px_rgba(45,212,191,0.38)] hover:!bg-teal-300 sm:!w-auto sm:!px-10 sm:!py-[1.15rem] sm:!text-lg"
             >
               Book a free call
             </Button>
@@ -109,7 +109,7 @@ export default function Hero() {
             <Button
               to="/services"
               variant="ghost"
-              className="!w-full !rounded-full !border-white/15 !bg-transparent !px-7 !py-3.5 !text-[15px] !text-zinc-200 hover:!bg-white/[0.06] sm:!w-auto"
+              className="!w-full !rounded-full !border-white/15 !bg-transparent !px-9 !py-4 !text-base !text-zinc-200 hover:!bg-white/[0.06] sm:!w-auto sm:!px-10 sm:!py-[1.15rem] sm:!text-lg"
             >
               View services
             </Button>

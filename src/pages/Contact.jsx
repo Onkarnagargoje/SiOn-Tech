@@ -72,7 +72,7 @@ export default function Contact() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="mt-2 block break-all font-semibold text-brand-ink hover:text-brand-teal"
+                        className="mt-2 block whitespace-nowrap text-sm font-semibold text-brand-ink hover:text-brand-teal sm:text-base"
                       >
                         {item.value}
                       </a>

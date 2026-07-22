@@ -1,11 +1,9 @@
 import SEO from '../components/seo/SEO'
 import Reveal from '../components/animations/Reveal'
-import { CalendarDays, Target, Users, Rocket } from 'lucide-react'
-import { COMPANY, TEAM, VALUES, TIMELINE } from '../data/about'
+import { CalendarDays, Target, Users, Rocket, Compass, Eye, Check } from 'lucide-react'
+import { COMPANY, VALUES, TIMELINE } from '../data/about'
 import ProcessCarousel from '../components/home/ProcessCarousel'
 import {
-  Avatar,
-  Button,
   Card,
   Container,
   CTASection,
@@ -112,77 +110,133 @@ export default function About() {
         </Container>
       </Section>
 
-      <Section tone="white" className="relative overflow-hidden">
+      <Section tone="mist" className="relative overflow-hidden" ariaLabelledby="purpose-heading">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-brand-teal/10 blur-3xl"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,rgba(13,148,136,0.12),transparent_50%),radial-gradient(ellipse_at_90%_70%,rgba(15,23,42,0.08),transparent_45%)]"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-brand-navy/10 blur-3xl"
-        />
-        <Container className="relative grid auto-rows-fr gap-5 lg:grid-cols-2 lg:gap-6">
-          <Reveal className="h-full">
-            <Card className="relative flex h-full min-h-[22rem] flex-col overflow-hidden !border-transparent !bg-brand-teal p-8 text-white sm:min-h-[24rem] sm:p-11 lg:p-12">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full border border-white/15"
-              />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute bottom-0 left-0 h-28 w-full opacity-30"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1.2px)',
-                  backgroundSize: '14px 14px',
-                  maskImage: 'linear-gradient(to top, black, transparent)',
-                }}
-              />
-              <p className="relative text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                Our purpose
-              </p>
-              <Heading as="h2" size="title" light className="relative mt-4 !text-white">
-                Mission
-              </Heading>
-              <Text light className="relative mt-6 max-w-xl flex-1 !text-lg leading-relaxed !text-white/90 sm:!text-xl">
-                Help every client launch a professional digital presence that matches their brand and
-                stays reliable over time — with clear communication from brief to launch.
-              </Text>
-              <p className="relative mt-8 text-sm font-semibold text-white/80 sm:text-base">
-                Clarity · Craft · Care after launch
-              </p>
-            </Card>
-          </Reveal>
-          <Reveal delay={0.08} className="h-full">
-            <Card className="relative flex h-full min-h-[22rem] flex-col overflow-hidden !border-transparent !bg-brand-navy p-8 text-white sm:min-h-[24rem] sm:p-11 lg:p-12">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-brand-aqua/15 blur-2xl"
-              />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-y-10 right-0 w-16 opacity-30"
-                style={{
-                  backgroundImage:
-                    'repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0 1px, transparent 1px 7px)',
-                  maskImage: 'linear-gradient(to left, black, transparent)',
-                }}
-              />
-              <p className="relative text-xs font-bold uppercase tracking-[0.18em] text-white/65">
-                Where we&apos;re headed
-              </p>
-              <Heading as="h2" size="title" light className="relative mt-4 !text-white">
-                Vision
-              </Heading>
-              <Text light className="relative mt-6 max-w-xl flex-1 !text-lg leading-relaxed !text-white/90 sm:!text-xl">
-                Become a trusted website and portal partner for growing organizations — starting with
-                businesses, colleges and schools worldwide.
-              </Text>
-              <p className="relative mt-8 text-sm font-semibold text-brand-aqua sm:text-base">
-                Businesses · Colleges · Schools
-              </p>
-            </Card>
-          </Reveal>
+        <Container className="relative">
+          <SectionHeader
+            titleId="purpose-heading"
+            eyebrow="Purpose"
+            accent="teal"
+            title="What guides every project"
+            description="Mission and vision aren’t posters on a wall — they shape how we scope, design, ship and support every website we build."
+          />
+
+          <div className="mt-10 grid auto-rows-fr gap-5 lg:mt-12 lg:grid-cols-2 lg:gap-6">
+            <Reveal className="h-full">
+              <article className="relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[1.75rem] bg-brand-teal p-8 text-white shadow-teal sm:min-h-[28rem] sm:p-10 lg:p-11">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full border border-white/20"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -bottom-16 -left-8 h-56 w-56 rounded-full bg-white/10 blur-2xl"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-0 left-0 h-36 w-full opacity-35"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle, rgba(255,255,255,0.5) 1.1px, transparent 1.2px)',
+                    backgroundSize: '16px 16px',
+                    maskImage: 'linear-gradient(to top, black, transparent)',
+                  }}
+                />
+
+                <div className="relative flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-white backdrop-blur-sm">
+                    <Compass className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/75">
+                    Our purpose
+                  </p>
+                </div>
+
+                <Heading as="h2" size="title" light className="relative mt-5 !text-white">
+                  Mission
+                </Heading>
+                <Text light className="relative mt-5 max-w-xl !text-lg leading-relaxed !text-white/92 sm:!text-xl sm:leading-8">
+                  Help every client launch a professional digital presence that matches their brand and
+                  stays reliable over time — with clear communication from brief to launch.
+                </Text>
+
+                <ul className="relative mt-8 space-y-3.5">
+                  {[
+                    'Honest scope and timelines you can plan around',
+                    'Design that feels premium and stays easy to use',
+                    'Support that continues after go-live',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-base text-white/90 sm:text-lg">
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/20">
+                        <Check className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="relative mt-auto pt-10 text-sm font-semibold tracking-wide text-white/85 sm:text-base">
+                  Clarity · Craft · Care after launch
+                </p>
+              </article>
+            </Reveal>
+
+            <Reveal delay={0.08} className="h-full">
+              <article className="relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[1.75rem] bg-brand-navy p-8 text-white shadow-mid sm:min-h-[28rem] sm:p-10 lg:p-11">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-12 bottom-8 h-56 w-56 rounded-full bg-brand-aqua/20 blur-3xl"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-8 right-0 w-20 opacity-35"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(90deg, rgba(255,255,255,0.22) 0 1px, transparent 1px 8px)',
+                    maskImage: 'linear-gradient(to left, black, transparent)',
+                  }}
+                />
+
+                <div className="relative flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-brand-aqua backdrop-blur-sm">
+                    <Eye className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/65">
+                    Where we&apos;re headed
+                  </p>
+                </div>
+
+                <Heading as="h2" size="title" light className="relative mt-5 !text-white">
+                  Vision
+                </Heading>
+                <Text light className="relative mt-5 max-w-xl !text-lg leading-relaxed !text-white/92 sm:!text-xl sm:leading-8">
+                  Become a trusted website and portal partner for growing organizations — starting with
+                  businesses, colleges and schools worldwide.
+                </Text>
+
+                <div className="relative mt-8 grid gap-3 sm:grid-cols-3">
+                  {['Businesses', 'Colleges', 'Schools'].map((label) => (
+                    <div
+                      key={label}
+                      className="rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-4 text-center backdrop-blur-sm"
+                    >
+                      <p className="font-display text-sm font-bold tracking-tight text-white sm:text-base">
+                        {label}
+                      </p>
+                      <p className="mt-1 text-xs text-white/55">Sites that convert</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="relative mt-auto pt-10 text-sm font-semibold text-brand-aqua sm:text-base">
+                  Local craft · Global-ready quality
+                </p>
+              </article>
+            </Reveal>
+          </div>
         </Container>
       </Section>
 
@@ -264,33 +318,6 @@ export default function About() {
               </Reveal>
             ))}
           </ul>
-        </Container>
-      </Section>
-
-      <Section tone="white">
-        <Container>
-          <SectionHeader eyebrow="Team" title="People behind the craft" />
-          <div className="mt-10 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map((member, i) => (
-              <Reveal key={member.name} delay={i * 0.04} className="h-full">
-                <Card className="flex h-full min-h-[15rem] flex-col p-6">
-                  <Avatar initials={member.initials} index={i} className="!h-12 !w-12 !text-sm" />
-                  <Heading as="h3" size="md" className="mt-4">
-                    {member.name}
-                  </Heading>
-                  <p className="text-sm font-semibold text-brand-teal sm:text-base">{member.role}</p>
-                  <Text size="sm" className="mt-2 flex-1 !text-base">
-                    {member.bio}
-                  </Text>
-                </Card>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10">
-            <Button to="/contact" icon className="!rounded-full">
-              Work with us
-            </Button>
-          </div>
         </Container>
       </Section>
 
