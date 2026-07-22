@@ -34,6 +34,9 @@ export const SITE = {
     ],
   },
   keywords: [
+    'SiOn Tech Solutions',
+    'Sion Tech Solutions',
+    'siontechsolutions',
     'web development company India',
     'custom website design',
     'college website development',
@@ -43,7 +46,6 @@ export const SITE = {
     'website redesign',
     'website maintenance',
     'SEO ready websites',
-    'SiOn Tech Solutions',
   ],
   social: {
     linkedin: 'https://www.linkedin.com/company/sion-tech-solutions/',
