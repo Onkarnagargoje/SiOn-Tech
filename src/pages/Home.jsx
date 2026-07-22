@@ -16,7 +16,7 @@ import {
 } from '../lib/seo'
 
 export default function Home() {
-  const title = 'Custom Websites, Portals & Maintenance in India'
+  const title = 'Web Development Company for Businesses, Colleges & Schools'
   const description = SITE.description
 
   return (

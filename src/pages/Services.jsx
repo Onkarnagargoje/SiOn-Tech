@@ -17,7 +17,7 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Web Development Services in India"
+        title="Services — Custom Websites, Portals & Maintenance"
         description="Custom website design, college & school websites, portal development, redesign and maintenance from SiOn Tech Solutions — serving India and worldwide."
         path="/services"
       />

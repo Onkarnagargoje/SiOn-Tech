@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import Analytics from '../seo/Analytics'
 import { useLenis } from '../../hooks/useLenis'
 import PageTransition from './PageTransition'
 
@@ -26,6 +27,7 @@ export default function Layout() {
 
   return (
     <div className="relative min-h-screen">
+      <Analytics />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-teal focus:px-4 focus:py-2 focus:text-white"

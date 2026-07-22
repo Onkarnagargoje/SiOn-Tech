@@ -1,0 +1,40 @@
+{
+  "name": "SiOn Tech Solutions",
+  "short_name": "SiOn",
+  "description": "Custom websites and portals for businesses, colleges and schools across India and worldwide.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0B1220",
+  "theme_color": "#0F766E",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -7,8 +7,8 @@ export default function Portfolio() {
   return (
     <>
       <SEO
-        title="Work"
-        description="Explore websites and portals built by SiOn Tech Solutions."
+        title="Portfolio — Websites & Portals We Build"
+        description="Explore websites and portals built by SiOn Tech Solutions for businesses, colleges and schools."
         path="/portfolio"
       />
 

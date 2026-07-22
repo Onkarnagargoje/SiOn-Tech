@@ -88,6 +88,12 @@ export default function SEO({
       <link rel="alternate" type="text/plain" href={`${SITE.url}/llms.txt`} title="llms.txt" />
       <meta name="ai-content-declaration" content="human-authored business website content" />
 
+      <link rel="manifest" href="/manifest.webmanifest" />
+      <meta name="application-name" content={SITE.shortName} />
+      <meta name="apple-mobile-web-app-title" content={SITE.shortName} />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="mobile-web-app-capable" content="yes" />
+
       <script type="application/ld+json">{JSON.stringify(structured)}</script>
     </Helmet>
   )
