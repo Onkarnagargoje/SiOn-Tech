@@ -7,9 +7,9 @@ export const SITE = {
     'SiOn Tech Solutions builds custom websites and portals for businesses, colleges and schools across India and worldwide — plus redesign, management and ongoing maintenance.',
   url: 'https://siontechsolutions.com',
   email: 'siontechnologies01@gmail.com',
-  phone: '9637531275',
-  phoneDisplay: '+91 96375 31275',
-  phoneTel: '+919637531275',
+  phone: '9511841275',
+  phoneDisplay: '+91 95118 41275',
+  phoneTel: '+919511841275',
   foundingDate: '2025',
   address: 'Remote-first · Serving India & worldwide',
   /** Geographic SEO */

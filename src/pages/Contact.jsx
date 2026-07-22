@@ -18,7 +18,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact — Get a Free Website Consultation"
-        description="Contact SiOn Tech Solutions for custom websites, portals, redesign or maintenance. Email siontechnologies01@gmail.com or call +91 96375 31275."
+        description="Contact SiOn Tech Solutions for custom websites, portals, redesign or maintenance. Email siontechnologies01@gmail.com or call +91 95118 41275."
         path="/contact"
       />
 
