@@ -2,8 +2,14 @@ import { Link, useParams, Navigate } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight, Clock } from 'lucide-react'
 import SEO from '../components/seo/SEO'
 import { BLOG_POSTS } from '../data/blog'
+import { SITE } from '../data/site'
 import Reveal from '../components/animations/Reveal'
 import { Button, Container, CTASection, Section } from '../components/ui'
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  defaultGraphJsonLd,
+} from '../lib/seo'
 
 const TAKEAWAYS = [
   'Start with the business outcome, not the technology choice.',
@@ -28,6 +34,24 @@ export default function BlogPost() {
         description={post.excerpt}
         path={`/blog/${post.id}`}
         type="article"
+        article={{
+          published: post.date,
+          modified: post.date,
+          section: post.category,
+        }}
+        jsonLd={defaultGraphJsonLd({
+          title: `${post.title} | ${SITE.name}`,
+          description: post.excerpt,
+          path: `/blog/${post.id}`,
+          extra: [
+            breadcrumbJsonLd([
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: post.title, path: `/blog/${post.id}` },
+            ]),
+            articleJsonLd(post),
+          ],
+        })}
       />
 
       <Section tone="mist" className="relative !pt-28 sm:!pt-32 lg:!pt-40" ariaLabelledby="post-title">

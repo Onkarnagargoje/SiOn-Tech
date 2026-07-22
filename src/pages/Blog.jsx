@@ -31,8 +31,8 @@ export default function Blog() {
   return (
     <>
       <SEO
-        title="Blog"
-        description="Insights on websites, portals, design and delivery from the SiOn Tech Solutions team."
+        title="Blog — Websites, Portals & Delivery"
+        description="Practical insights on custom websites, portals, design and delivery from SiOn Tech Solutions — for businesses, colleges and schools in India and beyond."
         path="/blog"
       />
 

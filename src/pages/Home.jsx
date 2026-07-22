@@ -5,45 +5,35 @@ import AboutPreview from '../components/home/AboutPreview'
 import ProcessPreview from '../components/home/ProcessPreview'
 import Industries from '../components/home/Industries'
 import WhyChooseUs from '../components/home/WhyChooseUs'
+import HomeFaq from '../components/home/HomeFaq'
 import ContactInquiry from '../components/home/ContactInquiry'
 import { CTASection } from '../components/ui'
 import { SITE } from '../data/site'
+import {
+  breadcrumbJsonLd,
+  defaultGraphJsonLd,
+  faqJsonLd,
+} from '../lib/seo'
 
 export default function Home() {
+  const title = 'Custom Websites, Portals & Maintenance in India'
+  const description = SITE.description
+
   return (
     <>
       <SEO
         path="/"
-        title="Custom Websites, Portals & Maintenance"
-        description={SITE.description}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@graph': [
-            {
-              '@type': 'Organization',
-              name: SITE.name,
-              url: SITE.url,
-              email: SITE.email,
-              telephone: SITE.phone,
-              description: SITE.description,
-              sameAs: Object.values(SITE.social),
-            },
-            {
-              '@type': 'ProfessionalService',
-              name: SITE.name,
-              url: SITE.url,
-              description: SITE.description,
-              areaServed: 'Worldwide',
-              serviceType: [
-                'Custom Website Development',
-                'Portal Development',
-                'Website Management',
-                'Website Redesign',
-                'Website Maintenance',
-              ],
-            },
+        title={title}
+        description={description}
+        jsonLd={defaultGraphJsonLd({
+          title: `${title} | ${SITE.name}`,
+          description,
+          path: '/',
+          extra: [
+            breadcrumbJsonLd([{ name: 'Home', path: '/' }]),
+            faqJsonLd(),
           ],
-        }}
+        })}
       />
       <Hero />
       <ServicesGrid />
@@ -51,6 +41,7 @@ export default function Home() {
       <ProcessPreview />
       <Industries />
       <WhyChooseUs />
+      <HomeFaq />
       <ContactInquiry />
       <CTASection />
     </>

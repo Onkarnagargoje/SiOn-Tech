@@ -5,7 +5,7 @@ import { Button, Container, Heading, Text } from '../components/ui'
 export default function NotFound() {
   return (
     <>
-      <SEO title="404 — Page Not Found" description="Page not found." path="/404" />
+      <SEO title="404 — Page Not Found" description="Page not found." path="/404" noindex />
       <div className="flex min-h-[70vh] items-center justify-center py-20">
         <Container className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-coral">Error 404</p>

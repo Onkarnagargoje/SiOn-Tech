@@ -48,8 +48,8 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About"
-        description="About SiOn Tech Solutions — founded in 2025. Custom websites, portals, management, redesign and maintenance for businesses, colleges and schools."
+        title="About SiOn Tech Solutions"
+        description="About SiOn Tech Solutions — founded in 2025 in India. Custom websites, portals, redesign and maintenance for businesses, colleges and schools across India and worldwide."
         path="/about"
       />
 

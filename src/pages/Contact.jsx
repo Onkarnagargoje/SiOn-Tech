@@ -17,8 +17,8 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact"
-        description="Contact SiOn Tech Solutions for website, portal, redesign or maintenance projects."
+        title="Contact SiOn Tech Solutions"
+        description="Contact SiOn Tech Solutions in India for custom websites, portals, redesign or maintenance. Email siontechnologies01@gmail.com or call +91 96375 31275."
         path="/contact"
       />
 
