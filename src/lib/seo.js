@@ -5,64 +5,49 @@ const absoluteUrl = (path = '/') => {
   return `${SITE.url}${path.startsWith('/') ? path : `/${path}`}`
 }
 
+const logoImage = {
+  '@type': 'ImageObject',
+  url: `${SITE.url}/icon-192.png`,
+  contentUrl: `${SITE.url}/icon-192.png`,
+  width: 192,
+  height: 192,
+  caption: SITE.name,
+}
+
+/** Single brand entity — avoids duplicate Organisation / LocalBusiness warnings */
 export function organizationJsonLd() {
   return {
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': `${SITE.url}/#organization`,
     name: SITE.name,
     alternateName: [
-      'SiOn Tech Solutions',
       'Sion Tech Solutions',
       'SiOn Technologies',
       'siontechsolutions',
     ],
     legalName: SITE.legalName,
     url: SITE.url,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${SITE.url}/icon-192.png`,
-      width: 192,
-      height: 192,
-    },
-    image: `${SITE.url}/og-image.png`,
+    logo: logoImage,
+    image: [`${SITE.url}/og-image.png`, `${SITE.url}/icon-192.png`],
     email: SITE.email,
     telephone: SITE.phoneTel,
     foundingDate: SITE.foundingDate,
     description: SITE.description,
+    slogan: SITE.tagline,
+    priceRange: '$$',
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'Invoice, UPI, Bank Transfer',
     sameAs: Object.values(SITE.social).filter(Boolean),
     address: {
       '@type': 'PostalAddress',
-      addressCountry: SITE.geo.countryCode,
+      addressCountry: 'IN',
+      addressRegion: 'IN',
+      addressLocality: 'Remote-first',
     },
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: SITE.phoneTel,
-        contactType: 'sales',
-        email: SITE.email,
-        areaServed: SITE.geo.areaServed,
-        availableLanguage: ['English', 'Hindi'],
-      },
+    areaServed: [
+      { '@type': 'Country', name: 'India' },
+      { '@type': 'Place', name: 'Worldwide' },
     ],
-  }
-}
-
-export function professionalServiceJsonLd() {
-  return {
-    '@type': 'ProfessionalService',
-    '@id': `${SITE.url}/#business`,
-    name: SITE.name,
-    url: SITE.url,
-    image: `${SITE.url}/og-image.png`,
-    description: SITE.description,
-    telephone: SITE.phoneTel,
-    email: SITE.email,
-    priceRange: '$$',
-    foundingDate: SITE.foundingDate,
-    areaServed: SITE.geo.areaServed.map((name) => ({
-      '@type': name === 'Worldwide' ? 'Place' : 'Country',
-      name,
-    })),
     serviceType: [
       'Custom Website Development',
       'College Website Development',
@@ -74,19 +59,24 @@ export function professionalServiceJsonLd() {
       'Website Maintenance',
     ],
     knowsAbout: SITE.keywords,
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: SITE.geo.countryCode,
-      addressRegion: SITE.geo.region,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      /** India centroid — remote-first national service */
-      latitude: 20.5937,
-      longitude: 78.9629,
-    },
-    sameAs: Object.values(SITE.social).filter(Boolean),
-    parentOrganization: { '@id': `${SITE.url}/#organization` },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE.phoneTel,
+        contactType: 'customer service',
+        email: SITE.email,
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE.phoneTel,
+        contactType: 'sales',
+        email: SITE.email,
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi'],
+      },
+    ],
   }
 }
 
@@ -96,13 +86,16 @@ export function websiteJsonLd() {
     '@id': `${SITE.url}/#website`,
     url: SITE.url,
     name: SITE.name,
-    alternateName: ['Sion Tech Solutions', 'siontechsolutions.com', 'SiOn Technologies'],
+    alternateName: ['Sion Tech Solutions', 'siontechsolutions.com'],
     description: SITE.description,
     publisher: { '@id': `${SITE.url}/#organization` },
     inLanguage: SITE.geo.language,
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE.url}/blog?q={search_term_string}`,
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE.url}/blog?q={search_term_string}`,
+      },
       'query-input': 'required name=search_term_string',
     },
   }
@@ -165,22 +158,20 @@ export function articleJsonLd(post) {
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    author: {
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
-    },
+    author: { '@id': `${SITE.url}/#organization` },
     publisher: {
+      '@id': `${SITE.url}/#organization`,
       '@type': 'Organization',
       name: SITE.name,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE.url}/favicon.svg`,
-      },
+      logo: logoImage,
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.id}`),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': absoluteUrl(`/blog/${post.id}`),
+    },
     articleSection: post.category,
     inLanguage: SITE.geo.language,
+    image: `${SITE.url}/og-image.png`,
   }
 }
 
@@ -189,12 +180,16 @@ export function defaultGraphJsonLd({ title, description, path = '/', extra = [] 
     '@context': 'https://schema.org',
     '@graph': [
       organizationJsonLd(),
-      professionalServiceJsonLd(),
       websiteJsonLd(),
       webpageJsonLd({ title, description, path }),
       ...extra,
     ],
   }
+}
+
+// Keep export name used by older imports
+export function professionalServiceJsonLd() {
+  return organizationJsonLd()
 }
 
 export { absoluteUrl }
